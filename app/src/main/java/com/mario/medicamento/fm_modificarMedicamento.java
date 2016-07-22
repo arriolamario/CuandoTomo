@@ -252,7 +252,7 @@ public class fm_modificarMedicamento extends Fragment{
                 public void onClick(DialogInterface dialog, int which) {
 
                 }
-            }).setTitle("Alerta").setMessage("¿Esta seguro que quiere eliminar el medicamento");
+            }).setTitle("Alerta").setMessage("¿Esta seguro que quiere eliminar el medicamento?").setIcon(R.drawable.alerta);
 
             return builder.create();
         }

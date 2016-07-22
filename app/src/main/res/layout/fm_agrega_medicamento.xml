@@ -125,7 +125,8 @@
             android:textAlignment="center"
             android:textColorHint="@color/blanco"
             android:shadowColor="@color/blanco"
-            android:backgroundTint="@color/blanco" />
+            android:backgroundTint="@color/blanco"
+            />
 
     </LinearLayout>
 </LinearLayout>
