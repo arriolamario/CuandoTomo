@@ -144,26 +144,27 @@ public class fm_listarMedicamentos extends Fragment {
                 cargarMedicamentos();
                 break;
             case R.id.btnStop:
-                notificaciones();
+                notificaciones(item);
                 break;
         }
 
         return true;
     }
 
-    private void notificaciones() {
+    private void notificaciones(MenuItem menuItem) {
         boolean corriendo = isMyServiceRunning(ServiceMedicamento.class);
-
         if(corriendo){
             rootView.getContext().stopService(new Intent(rootView.getContext(),ServiceMedicamento.class));
             Toast.makeText(rootView.getContext(), getString(R.string.STOP), Toast.LENGTH_SHORT).show();
             usuario.setNotificacion(0);
             usuario.modificacion();
+            menuItem.setIcon(R.drawable.boton_iniciar);
         }else{
             usuario.setNotificacion(1);
             usuario.modificacion();
             Toast.makeText(rootView.getContext(), getString(R.string.ACTIVAS), Toast.LENGTH_SHORT).show();
             rootView.getContext().startService(new Intent(rootView.getContext(), ServiceMedicamento.class));
+            menuItem.setIcon(R.drawable.detener);
         }
     }
 
