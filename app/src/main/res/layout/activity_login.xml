@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/fondo"
+        android:scaleType="centerCrop"/>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Iniciar Sesion"
+                android:ems="15"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:textSize="@dimen/tamaño_titulo"
+                android:textColor="@color/blanco"
+                />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/etUsername"
+                android:textSize="@dimen/tamaño_letra"
+                android:hint="usuario"
+                android:ems="15"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:textColor="@color/blanco"
+                android:textColorHint="@color/blanco"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/etPassword"
+                android:textSize="@dimen/tamaño_letra"
+                android:hint="clave"
+                android:ems="15"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:password="true"
+                android:layout_margin="20dp"
+                android:textColor="@color/blanco"
+                android:textColorHint="@color/blanco"
+
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Entrar"
+                android:ems="15"
+                android:textSize="@dimen/tamaño_letra"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:id="@+id/btnEntrar"
+                style="@style/Base.TextAppearance.AppCompat.Widget.Button"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="¿No tiene una cuenta?  "
+                    android:textSize="@dimen/tamaño_letra"
+                    android:textColor="@color/blanco"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="  REGISTRAR!!"
+                    android:onClick="registrar"
+                    android:textSize="@dimen/tamaño_titulo"
+                    android:textColor="@color/blanco"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

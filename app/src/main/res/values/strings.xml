@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">¿Cuando Tomo?</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="FECHA">dd-MMM-yyyy</string>
+    <string name="HORA">HH:mm</string>
+
+    <string-array name="Tags">
+        <item>Lista</item>
+        <item>Agregar</item>
+        <item>Datos Personales</item>
+        <item>Salir</item>
+    </string-array>
+
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="configure">Configure</string>
+    <string name="add_widget">Add widget</string>
+    <string name="ACTIVAS">Notificaciones Activas</string>
+    <string name="STOP">Notificaciones Desactivadas</string>
+    <string name="FALTAN_DATOS">Hay campos incompletos</string>
+    <string name="REGISTRO_CORRECTO">Se agrego correctamente</string>
+    <string name="REGISTRO_INCORRECTO">Ocurrio un error</string>
+    <string name="LOGIN_CORRECTO">Login incorrecto</string>
+    <string name="USUARIO_EXISTENTE">Usuario ya existentee</string>
+    <string name="FALTA_FECHAFIN">Debe indicar la fecha de finalizacion</string>
+    <string name="FALTA_NOMBRE">Falta el nombre</string>
+    <string name="FALTA_INTERVALO">Falta el intervalo</string>
+    <string name="FECHA_INCORRECTA">Fecha de finalizacion incorrecta</string>
+    <string name="MODIFICACION_CORRECTA">Se modifico correctamente</string>
+    <string name="MODIFICACION_INCORRECTA">No se pudo modificar</string>
+    <string name="MENSAJE_NOTIFICACION">Nueva toma de la medicacion</string>
+    <string name="NOTIFICACION">idNotificacion</string>
+    <string name="FALTA_APELLIDO">Falta el apellido</string>
+    <string name="FALTA_USUARIO">Falta el usuario</string>
+    <string name="FALTA_CLAVE">Falta la clave</string>
+</resources>

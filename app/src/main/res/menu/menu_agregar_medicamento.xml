@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:com.mario.proyecto="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/guardar_med"
+        com.mario.proyecto:showAsAction="ifRoom"
+        android:icon="@drawable/boton_guardar_archivo"
+        android:title="guardar"
+        />
+</menu>

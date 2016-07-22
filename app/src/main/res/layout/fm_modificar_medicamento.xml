@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/fondo"
+    android:id="@+id/fmAgregarMedicamento">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MEDICAMENTO"
+            android:textSize="@dimen/tamaño_titulo"
+            android:layout_margin="@dimen/margen"
+            android:textColor="@color/blanco"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="15dp">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/etNombre"
+            android:textSize="@dimen/tamaño_letra"
+            android:hint="NOMBRE"
+            android:textColor="@color/blanco"
+            android:textColorHint="@color/blanco"
+            android:backgroundTint="@color/blanco" />
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_margin="@dimen/margen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FECHA INICIO"
+                android:id="@+id/tvFechaInicio"
+                android:textSize="@dimen/tamaño_letra"
+                android:textColor="@color/blanco"
+                android:linksClickable="false" />
+            <TextView
+                android:layout_margin="@dimen/margen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HORA"
+                android:id="@+id/tvHoraInicio"
+                android:textSize="@dimen/tamaño_letra"
+                android:textColor="@color/blanco"/>
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_margin="@dimen/margen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FECHA FIN"
+                android:id="@+id/tvFechaFin"
+                android:textSize="@dimen/tamaño_letra"
+                android:textColor="@color/blanco"/>
+            <TextView
+                android:layout_margin="@dimen/margen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HORA"
+                android:id="@+id/tvHoraFin"
+                android:textSize="@dimen/tamaño_letra"
+                android:textColor="@color/blanco"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <RadioGroup
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rgIntervalo">
+                <RadioButton
+                    android:id="@+id/rbDias"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DIAS"
+                    android:textColor="@color/blanco"
+                    android:buttonTint="@color/blanco" />
+                <RadioButton
+                    android:id="@+id/rbHoras"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HORAS"
+                    android:textColor="@color/blanco"
+                    android:buttonTint="@color/blanco" />
+                <RadioButton
+                    android:id="@+id/rbMin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MINUTOS"
+                    android:textColor="@color/blanco"
+                    android:buttonTint="@color/blanco" />
+            </RadioGroup>
+        </LinearLayout>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/etIntervalo"
+            android:textSize="@dimen/tamaño_letra"
+            android:hint="INTERVALO"
+            android:textColor="@color/blanco"
+            android:inputType="number"
+            android:textColorHint="@color/blanco"
+            android:backgroundTint="@color/blanco"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+</LinearLayout>

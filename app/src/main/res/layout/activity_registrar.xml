@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/fondo"
+        android:scaleType="centerCrop"/>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crear Cuenta"
+                android:ems="15"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:textSize="@dimen/tamaño_titulo"
+                android:id="@+id/tvTitulo"
+                android:textColor="@color/blanco"
+
+                />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/etApellido"
+                android:hint="apellido"
+                android:ems="15"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:textColorHint="@color/blanco"
+                android:textColor="@color/blanco"
+                android:textSize="@dimen/tamaño_letra"
+
+                />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/etNombre"
+                android:hint="nombre"
+                android:ems="15"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:textColorHint="@color/blanco"
+                android:textColor="@color/blanco"
+                android:textSize="@dimen/tamaño_letra"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/etUsername"
+                android:hint="usuario"
+                android:ems="15"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:textColorHint="@color/blanco"
+                android:textColor="@color/blanco"
+                android:textSize="@dimen/tamaño_letra"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/etPassword"
+                android:hint="clave"
+                android:ems="15"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:password="true"
+                android:layout_margin="20dp"
+                android:textColorHint="@color/blanco"
+                android:textColor="@color/blanco"
+                android:textSize="@dimen/tamaño_letra"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Registrar"
+                android:ems="15"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:id="@+id/btnRegistrar"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

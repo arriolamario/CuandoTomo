@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/azul"
+    >
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NOMBRE"
+            android:id="@+id/tvNombre"
+            android:textSize="@dimen/tamaño_letra"
+            android:textColor="@color/blanco"/>
+        <TextView
+            android:gravity="right"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PROXIMA TOMA"
+            android:id="@+id/tvSiguienteToma"
+            android:textSize="@dimen/tamaño_letra"
+            android:textColor="@color/blanco"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blanco"
+            android:text="FECHA INICIO"
+            android:id="@+id/tvFechaInicio"
+            android:textSize="@dimen/tamaño_letra"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blanco"
+            android:gravity="right"
+            android:text="FECHA FIN"
+            android:id="@+id/tvFechaFin"
+            android:textSize="@dimen/tamaño_letra"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TIEMPO RESTANTE:"
+            android:textColor="@color/blanco"
+            android:textSize="@dimen/tamaño_letra"/>
+        <TextView
+            android:layout_marginLeft="@dimen/margen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5min"
+            android:textColor="@color/blanco"
+            android:id="@+id/tvRestante"
+            android:textSize="@dimen/tamaño_letra"/>
+    </LinearLayout>
+
+</LinearLayout>

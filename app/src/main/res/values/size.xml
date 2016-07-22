@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tamaño_letra">18sp</dimen>
+    <dimen name="tamaño_titulo">22sp</dimen>
+    <dimen name="margen">10dp</dimen>
+</resources>
