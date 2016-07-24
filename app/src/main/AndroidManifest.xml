@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mario.medicamento">
 
-
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <application
         android:allowBackup="true"
         android:icon="@drawable/medicamentos"
@@ -25,6 +25,12 @@
             android:name=".ServiceMedicamento"
             android:enabled="true"
             android:exported="true"/>
+
+        <receiver android:name=".InicioMovilReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

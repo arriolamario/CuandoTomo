@@ -29,7 +29,7 @@ public class ServiceMedicamento extends Service {
     public static final String TAG = "ServiceMedicamento";
     Timer timer = new Timer();
     int id;
-    private static final int TIEMPO = 5000; // en milisegundos
+    private static final int TIEMPO = 5; // en segundos
     public ServiceMedicamento() {
     }
 
@@ -49,7 +49,7 @@ public class ServiceMedicamento extends Service {
                 new TareaEnSegundoPlano().execute();
 
             }
-        },0,TIEMPO);
+        },0,TIEMPO * 1000);
 
         return START_STICKY;
     }
