@@ -23,7 +23,6 @@ public class RegistrarActivity extends Activity {
         setContentView(R.layout.activity_registrar);
         //notificacionCancelar();
         etUsuario = (EditText) findViewById(R.id.etUsername);
-        etClave = (EditText) findViewById(R.id.etPassword);
         registrar = (Button) findViewById(R.id.btnRegistrar);
         etApellido = (EditText) findViewById(R.id.etApellido);
         etNombre = (EditText) findViewById((R.id.etNombre));
@@ -35,10 +34,9 @@ public class RegistrarActivity extends Activity {
                     return;
                 }
                 final String usuario = etUsuario.getText().toString();
-                final String clave = etClave.getText().toString();
                 final String apellido = etApellido.getText().toString();
                 final String nombre = etNombre.getText().toString();
-                Usuario u = new Usuario(getApplication(), nombre, apellido, usuario, clave, 1);
+                Usuario u = new Usuario(getApplication(), nombre, apellido, usuario, 1);
                 if (u.existeUsuario()) {
                     Toast.makeText(getBaseContext(), getString(R.string.USUARIO_EXISTENTE), Toast.LENGTH_LONG).show();
                 } else {
@@ -67,10 +65,6 @@ public class RegistrarActivity extends Activity {
         }
         if(etUsuario.getText().length() == 0){
             Toast.makeText(getApplicationContext(),getString(R.string.FALTA_USUARIO),Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        if(etClave.getText().length() == 0){
-            Toast.makeText(getApplicationContext(),getString(R.string.FALTA_CLAVE),Toast.LENGTH_SHORT).show();
             return false;
         }
 

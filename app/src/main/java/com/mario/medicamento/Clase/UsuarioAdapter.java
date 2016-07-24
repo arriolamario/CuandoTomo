@@ -17,11 +17,10 @@ public class UsuarioAdapter{
         public final static String NOMBRE = "nombre";
         public final static String APELLIDO = "apellido";
         public final static String USUARIO = "usuario";
-        public final static String CLAVE = "clave";
         public final static String NOTIFICACION = "noti";
 
         public final static String[] arregloColumnas(){
-            String[] arrglo = new String[] {ID,NOMBRE,APELLIDO,USUARIO,CLAVE};
+            String[] arrglo = new String[] {ID,NOMBRE,APELLIDO,USUARIO};
             return arrglo;
         }
     }
@@ -31,8 +30,7 @@ public class UsuarioAdapter{
             + Col.APELLIDO + " text,"
             + Col.NOMBRE + " text,"
             + Col.NOTIFICACION + " integer not null,"
-            + Col.USUARIO + " text not null,"
-            + Col.CLAVE + " text not null);";
+            + Col.USUARIO + " text not null);";
 
     private DataBaseHelper dbHelper;
     private SQLiteDatabase db;
@@ -48,7 +46,6 @@ public class UsuarioAdapter{
         valores.put(Col.APELLIDO,usuario.getApellido());
         valores.put(Col.NOMBRE,usuario.getNombre());
         valores.put(Col.USUARIO, usuario.getUsuario());
-        valores.put(Col.CLAVE, usuario.getClave());
         valores.put(Col.NOTIFICACION, usuario.getNotificacion());
 
         return  valores;
@@ -75,8 +72,8 @@ public class UsuarioAdapter{
     }
 
     public Cursor loginUsuario(Usuario usuario){
-        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + Col.USUARIO + " = ? AND " + Col.CLAVE + " = ?";
-        String[] params = new String[]{usuario.getUsuario(), usuario.getClave()};
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + Col.USUARIO + " = ?";
+        String[] params = new String[]{usuario.getUsuario()};
 
         return db.rawQuery(query,params);
     }
@@ -102,7 +99,12 @@ public class UsuarioAdapter{
         return db.rawQuery(query,params);
     }
 
+    public Cursor getUsuarios() {
+        String query = "SELECT * FROM " + TABLE_NAME;
+        String[] params = new String[0];
 
+        return db.rawQuery(query,params);
+    }
 
 
 

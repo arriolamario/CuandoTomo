@@ -72,27 +72,16 @@
                 android:textColor="@color/blanco"
                 android:textSize="@dimen/tamaño_letra"/>
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/etPassword"
-                android:hint="clave"
-                android:ems="15"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:password="true"
-                android:layout_margin="20dp"
-                android:textColorHint="@color/blanco"
-                android:textColor="@color/blanco"
-                android:textSize="@dimen/tamaño_letra"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Registrar"
-                android:ems="15"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:layout_margin="20dp"
+                android:textSize="@dimen/tamaño_titulo"
+                android:textColor="@color/negroo"
+                android:background="@drawable/button"
                 android:id="@+id/btnRegistrar"/>
 
 

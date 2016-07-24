@@ -53,7 +53,7 @@ public class fm_listarMedicamentos extends Fragment {
 
         rootView = inflater.inflate(R.layout.fm_listar_medicamentos,container,false);
         setHasOptionsMenu(true);
-
+        getActivity().setTitle("Lista");
         listView = (ListView) rootView.findViewById(R.id.lvListaMed);
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -68,12 +68,7 @@ public class fm_listarMedicamentos extends Fragment {
         });
 
         if(cargarMedicamentos()){
-            if (usuario.getNotificacion() ==  1) {
-                rootView.getContext().startService(new Intent(rootView.getContext(), ServiceMedicamento.class));
-            }
-            else{
-                rootView.getContext().stopService(new Intent(rootView.getContext(), ServiceMedicamento.class));
-            }
+
         }
 
 
@@ -152,9 +147,8 @@ public class fm_listarMedicamentos extends Fragment {
     }
 
     private void notificaciones(MenuItem menuItem) {
-        boolean corriendo = isMyServiceRunning(ServiceMedicamento.class);
-        if(corriendo){
-            rootView.getContext().stopService(new Intent(rootView.getContext(),ServiceMedicamento.class));
+        Usuario usuario = new Usuario(rootView.getContext(),recuperarIdUsuario());
+        if(usuario.getNotificacion() == 1){
             Toast.makeText(rootView.getContext(), getString(R.string.STOP), Toast.LENGTH_SHORT).show();
             usuario.setNotificacion(0);
             usuario.modificacion();
@@ -163,7 +157,6 @@ public class fm_listarMedicamentos extends Fragment {
             usuario.setNotificacion(1);
             usuario.modificacion();
             Toast.makeText(rootView.getContext(), getString(R.string.ACTIVAS), Toast.LENGTH_SHORT).show();
-            rootView.getContext().startService(new Intent(rootView.getContext(), ServiceMedicamento.class));
             menuItem.setIcon(R.drawable.detener);
         }
     }

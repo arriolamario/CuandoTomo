@@ -23,7 +23,6 @@ public class Usuario {
 	private String nombre;
 	private String apellido;
 	private String usuario;
-	private String clave;
 	public ArrayList<Medicamento> listaMedicamentos;
     private UsuarioAdapter adapter;
     private int notificacion;
@@ -42,11 +41,10 @@ public class Usuario {
 
 	}
 
-    public Usuario(Context context, String nombre, String apellido, String usuario, String clave, int notificacion) {
+    public Usuario(Context context, String nombre, String apellido, String usuario, int notificacion) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.usuario = usuario;
-        this.clave = clave;
         this.notificacion = notificacion;
         adapter = new UsuarioAdapter(context);
     }
@@ -89,7 +87,6 @@ public class Usuario {
             this.nombre = cur.getString(cur.getColumnIndex(UsuarioAdapter.Col.NOMBRE));
             this.apellido = cur.getString(cur.getColumnIndex(UsuarioAdapter.Col.APELLIDO));
             this.usuario = cur.getString(cur.getColumnIndex(UsuarioAdapter.Col.USUARIO));
-            this.clave = cur.getString(cur.getColumnIndex(UsuarioAdapter.Col.CLAVE));
             this.notificacion = cur.getInt(cur.getColumnIndex(UsuarioAdapter.Col.NOTIFICACION));
         }
     }
@@ -122,14 +119,6 @@ public class Usuario {
         this.usuario = usuario;
     }
 
-    public String getClave() {
-        return clave;
-    }
-
-    public void setClave(String clave) {
-        this.clave = clave;
-    }
-
     public boolean existeUsuario(){
         return adapter.existeUsuario(this);
         //return true si existe, false si no existe
@@ -141,7 +130,6 @@ public class Usuario {
         bundle.putString(UsuarioAdapter.Col.NOMBRE, nombre);
         bundle.putString(UsuarioAdapter.Col.APELLIDO, apellido);
         bundle.putString(UsuarioAdapter.Col.USUARIO, usuario);
-        bundle.putString(UsuarioAdapter.Col.CLAVE, clave);
         return bundle;
     }
 
@@ -205,7 +193,6 @@ public class Usuario {
         Log.i("msg usuario nombre" , this.nombre );
         Log.i("msg usuario apellido" , this.apellido );
         Log.i("msg usuario usuario" , this.usuario );
-        Log.i("msg usuario clave" , this.clave );
         Log.i("msg usuario notifiacion", this.notificacion + "");
     }
 
@@ -215,5 +202,20 @@ public class Usuario {
 
     public void setNotificacion(int notificacion){
         this.notificacion = notificacion;
+    }
+
+    public static ArrayList getUsuarios(Context context){
+        ArrayList<Usuario> arrayList = new ArrayList<>();
+        UsuarioAdapter ua = new UsuarioAdapter(context);
+        Cursor cur = ua.getUsuarios();
+        if(cur.moveToFirst()){
+            do {
+                int id = cur.getInt(cur.getColumnIndex(UsuarioAdapter.Col.ID));
+                Usuario usuario = new Usuario(context, id);
+                arrayList.add(usuario);
+            }while (cur.moveToNext());
+        }
+
+        return arrayList;
     }
 }//end Usuario

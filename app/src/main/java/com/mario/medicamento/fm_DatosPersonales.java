@@ -1,7 +1,13 @@
 package com.mario.medicamento;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -23,6 +29,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -47,7 +54,6 @@ public class fm_DatosPersonales extends Fragment {
         etNombre = (EditText) rootView.findViewById(R.id.etNombre);
         etApellido = (EditText) rootView.findViewById(R.id.etApellido);
         etUsuario = (EditText) rootView.findViewById(R.id.etUsername);
-        etClave = (EditText) rootView.findViewById(R.id.etPassword);
         btnRegistrar = (Button) rootView.findViewById(R.id.btnRegistrar);
 
         btnRegistrar.setVisibility(View.INVISIBLE);
@@ -61,7 +67,6 @@ public class fm_DatosPersonales extends Fragment {
         etNombre.setText(usuario.getNombre());
         etApellido.setText(usuario.getApellido());
         etUsuario.setText(usuario.getUsuario());
-        etClave.setText(usuario.getClave());
 
         return  rootView;
 
@@ -100,9 +105,17 @@ public class fm_DatosPersonales extends Fragment {
         switch (item.getItemId()){
             case R.id.btnModificarDatos:
                 actualizarDatos();
+                break;
+            case R.id.btnEliminar:
+                eliminar();
+                break;
         }
 
         return true;
+    }
+
+    private void eliminar() {
+        new Dialogo().show(getFragmentManager(),"EliminarUsuario");
     }
 
     private void actualizarDatos() {
@@ -118,7 +131,6 @@ public class fm_DatosPersonales extends Fragment {
             usuario.setNombre(nombre);
             usuario.setApellido(apellido);
             usuario.setUsuario(user);
-            usuario.setClave(clave);
 
             if(mismoUsuario){
                 usuario.modificacion();
@@ -157,6 +169,47 @@ public class fm_DatosPersonales extends Fragment {
         }
 
         return true;
+    }
+
+
+    public class Dialogo extends DialogFragment {
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(rootView.getContext());
+            builder.setPositiveButton("si", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    usuario.baja();
+                    Salir();
+                    startActivity(new Intent(rootView.getContext(),LoginActivity.class));
+                }
+            }).setNegativeButton("no", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            }).setTitle("Alerta").setMessage("¿Esta seguro que quiere eliminar el usuario?").setIcon(R.drawable.alerta);
+
+            return builder.create();
+        }
+    }
+
+    public void Salir(){
+        // Abrir un fichero de salida privado a la aplicación
+        OutputStreamWriter fout= null;
+        try {
+            fout = new OutputStreamWriter(getActivity().openFileOutput(Contantes.TOKEN, Context.MODE_PRIVATE));
+            fout.write("");
+            fout.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Intent intent = new Intent(getActivity(),LoginActivity.class);
+        startActivity(intent);
     }
 
 

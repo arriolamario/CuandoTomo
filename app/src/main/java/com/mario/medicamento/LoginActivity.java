@@ -7,54 +7,63 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.mario.medicamento.Clase.Usuario;
+import com.mario.medicamento.Clases.ListUsuarioAdapter;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText etUsuario, etClave;
-    Button login;
+    ListView lvLista;
+    ArrayList<Usuario> listaUsuario;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         notificacionCancelar();
         Loegeado();
-        etUsuario = (EditText) findViewById(R.id.etUsername);
-        etClave = (EditText) findViewById(R.id.etPassword);
-        login = (Button) findViewById(R.id.btnEntrar);
+        IrARegistrar();
+        lvLista = (ListView) findViewById(R.id.lvListaUsuario);
+        actualizarLista();
 
-        login.setOnClickListener(new View.OnClickListener() {
+        lvLista.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public void onClick(View v) {
-                String usuario = etUsuario.getText().toString();
-                String clave = etClave.getText().toString();
-                Usuario u = new Usuario(getApplication(), null, null, usuario, clave, 1);
-                if (!ControlarCampos(u)) {
-                    return;
-                }
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Usuario usuario = new Usuario(getApplicationContext(), listaUsuario.get(position).getId());
 
-                if (u.login()) {
-                    LoginTrue(u);
+                if (usuario.login()) {
+                    LoginTrue(usuario);
                 } else {
                     LoginFalse();
                 }
+
+                return true;
             }
         });
+
+    }
+
+    private void actualizarLista() {
+        listaUsuario = Usuario.getUsuarios(getApplicationContext());
+        lvLista.setAdapter(new ListUsuarioAdapter(getApplicationContext(),listaUsuario));
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        actualizarLista();
     }
 
     public void registrar(View v){
@@ -86,19 +95,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private void LoginFalse(){
         Toast.makeText(getApplicationContext(),getString(R.string.LOGIN_CORRECTO), Toast.LENGTH_LONG).show();
-    }
-
-    private Boolean ControlarCampos(Usuario u){
-        if(u.getUsuario().length() == 0){
-            Toast.makeText(this,getString(R.string.FALTA_USUARIO),Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        if(u.getClave().length() == 0){
-            Toast.makeText(this,getString(R.string.FALTA_CLAVE),Toast.LENGTH_SHORT).show();
-            return false;
-        }
-
-        return true;
     }
 
     private void Loegeado(){
@@ -139,5 +135,13 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
+    }
+
+    private void IrARegistrar(){
+        listaUsuario = Usuario.getUsuarios(getApplicationContext());
+
+        if (listaUsuario.size() == 0){
+            startActivity(new Intent(getApplicationContext(),RegistrarActivity.class));
+        }
     }
 }

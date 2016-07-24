@@ -15,10 +15,6 @@ import android.util.Log;
 import com.mario.medicamento.Clase.Medicamento;
 import com.mario.medicamento.Clase.Usuario;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Timer;
@@ -28,7 +24,6 @@ public class ServiceMedicamento extends Service {
 
     public static final String TAG = "ServiceMedicamento";
     Timer timer = new Timer();
-    int id;
     private static final int TIEMPO = 5; // en segundos
     public ServiceMedicamento() {
     }
@@ -41,7 +36,7 @@ public class ServiceMedicamento extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        id = recuperarIdUsuario();
+        Log.i("msg","comienza el service");
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
@@ -49,37 +44,16 @@ public class ServiceMedicamento extends Service {
                 new TareaEnSegundoPlano().execute();
 
             }
-        },0,TIEMPO * 1000);
+        }, 0, TIEMPO * 1000);
 
         return START_STICKY;
     }
 
     @Override
     public void onDestroy() {
-        timer.cancel();
-        timer.purge();
+
     }
 
-    public int recuperarIdUsuario(){
-        BufferedReader fin = null;
-        String token;
-        try {
-            fin = new BufferedReader(
-                    new InputStreamReader(
-                            openFileInput(Contantes.TOKEN)));
-            token = fin.readLine();
-            fin.close();
-            if(token == null) return -1;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            return -1;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return -1;
-        }
-
-        return Integer.parseInt(token);
-    }
 
     public class TareaEnSegundoPlano extends AsyncTask<Void,Void,ArrayList>{
     //1 parametro de entrada para el doInBackground
@@ -87,19 +61,24 @@ public class ServiceMedicamento extends Service {
     //3 retorno del doInBackground
         @Override
         protected ArrayList doInBackground(Void... params) {
-            ArrayList<Medicamento> actualizar = new ArrayList<Medicamento>();
-            if(id == -1) return actualizar;
+            ArrayList<Medicamento> actualizar = new ArrayList<>();
 
-            Usuario usuario = new Usuario(getApplicationContext(),id);
+            ArrayList<Usuario> usuarios = Usuario.getUsuarios(getApplicationContext());
             Calendar actual = Calendar.getInstance();
-            for (int i = 0; i < usuario.getListaMedicamentos().size(); i++){
-                Medicamento medicamento = usuario.getListaMedicamentos().get(i);
-                Calendar siguiente = medicamento.getSiguienteToma();
-                if(actual.after(siguiente) && actual.after(medicamento.getFechaInicio())){
-                    actualizar.add(medicamento);
-                }
+            for(int j = 0; j< usuarios.size(); j++){
+                Usuario u = usuarios.get(j);
+                    for (int i = 0; i < u.getListaMedicamentos().size(); i++) {
+                        Medicamento medicamento = u.getListaMedicamentos().get(i);
+                        Calendar siguiente = medicamento.getSiguienteToma();
+                        if (actual.after(siguiente) && actual.after(medicamento.getFechaInicio())) {
+                            actualizar.add(medicamento);
+                        }
 
+
+                    }
             }
+
+            /**/
             return actualizar;
         }
 
@@ -109,8 +88,9 @@ public class ServiceMedicamento extends Service {
                 Medicamento medicamento = (Medicamento) arrayList.get(i);
                 medicamento.calcularProximaToma();
                 medicamento.modificacion();
-                displayNotification(medicamento);
-
+                if(medicamento.usuario.getNotificacion() == 1) {
+                    displayNotification(medicamento);
+                }
                 if(medicamento.getSiguienteToma().after(medicamento.getFechaFin())){
                     medicamento.baja();
                 }
@@ -128,8 +108,8 @@ public class ServiceMedicamento extends Service {
             NotificationManager nm = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
 
             CharSequence ticker = medicamento.usuario.getNombre();
-            CharSequence contentTitle = getString(R.string.MENSAJE_NOTIFICACION);
-            CharSequence contentText = medicamento.usuario.getNombre() + " tiene que tomar " +medicamento.getNombre();
+            CharSequence contentTitle = medicamento.usuario.getApellido() + " " + medicamento.usuario.getNombre();
+            CharSequence contentText = "Tiene que tomar " + medicamento.getNombre();
             Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
             Notification noti = new NotificationCompat.Builder(getApplication())

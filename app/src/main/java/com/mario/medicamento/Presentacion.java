@@ -14,6 +14,9 @@ public class Presentacion extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_presentacion);
 
+        startService(new Intent(getApplicationContext(),ServiceMedicamento.class));
+
+
         new Async().execute();
     }
 
@@ -21,6 +24,7 @@ public class Presentacion extends Activity {
 
         @Override
         protected Void doInBackground(Void... params) {
+
 
             try {
                 Thread.sleep(5000);

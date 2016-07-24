@@ -67,6 +67,7 @@ public class fm_salir extends Fragment {
                 public void onClick(DialogInterface dialog, int which) {
                     FragmentManager fm = getFragmentManager();
                     fm.beginTransaction().replace(R.id.content_frame, new fm_listarMedicamentos()).commit();
+
                 }
             }).setTitle("Alerta").setMessage("¿Esta seguro que quiere salir?").setIcon(R.drawable.alerta);
 
