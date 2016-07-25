@@ -1,10 +1,9 @@
-package com.mario.medicamento.Clase;
+package com.mario.medicamento.Clases;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.media.RemoteController;
 import android.provider.BaseColumns;
 
 /**

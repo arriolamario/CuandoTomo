@@ -14,6 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mario.medicamento.Clases.Constantes;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -21,7 +23,7 @@ import java.io.OutputStreamWriter;
 /**
  * Created by Mario on 24/06/2016.
  */
-public class fm_salir extends Fragment {
+public class Fm_salir extends Fragment {
     View rooView;
 
     @Nullable
@@ -38,7 +40,7 @@ public class fm_salir extends Fragment {
         // Abrir un fichero de salida privado a la aplicación
         OutputStreamWriter fout= null;
         try {
-            fout = new OutputStreamWriter(getActivity().openFileOutput(Contantes.TOKEN,Context.MODE_PRIVATE));
+            fout = new OutputStreamWriter(getActivity().openFileOutput(Constantes.TOKEN,Context.MODE_PRIVATE));
             fout.write("");
             fout.close();
         } catch (FileNotFoundException e) {
@@ -66,7 +68,7 @@ public class fm_salir extends Fragment {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     FragmentManager fm = getFragmentManager();
-                    fm.beginTransaction().replace(R.id.content_frame, new fm_listarMedicamentos()).commit();
+                    fm.beginTransaction().replace(R.id.content_frame, new Fm_listarMedicamentos()).commit();
 
                 }
             }).setTitle("Alerta").setMessage("¿Esta seguro que quiere salir?").setIcon(R.drawable.alerta);

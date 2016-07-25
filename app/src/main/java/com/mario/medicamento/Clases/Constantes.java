@@ -1,11 +1,9 @@
-package com.mario.medicamento;
-
-import com.mario.medicamento.Clase.Usuario;
+package com.mario.medicamento.Clases;
 
 /**
  * Created by Mario on 18/06/2016.
  */
-public class Contantes {
+public class Constantes {
     private static String IP = "http://10.75.60.35";
     private static String PUERTO = ":3000";
 

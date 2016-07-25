@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 
-import com.mario.medicamento.Clase.Usuario;
+import com.mario.medicamento.Clases.Usuario;
 
 /**
  * Created by Mario on 18/06/2016.

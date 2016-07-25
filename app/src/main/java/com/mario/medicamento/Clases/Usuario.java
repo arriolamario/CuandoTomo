@@ -1,11 +1,10 @@
-package com.mario.medicamento.Clase;
+package com.mario.medicamento.Clases;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 
-import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

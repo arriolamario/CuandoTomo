@@ -10,7 +10,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,27 +21,25 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mario.medicamento.Clase.Medicamento;
-import com.mario.medicamento.Clase.Usuario;
+import com.mario.medicamento.Clases.Constantes;
+import com.mario.medicamento.Clases.Usuario;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
-import java.util.Calendar;
 
 /**
  * Created by Mario on 16/07/2016.
  */
-public class fm_DatosPersonales extends Fragment {
+public class Fm_DatosPersonales extends Fragment {
 
     View rootView;
     EditText etNombre, etApellido, etUsuario, etClave;
     Button btnRegistrar;
     Usuario usuario;
-    public fm_DatosPersonales() {
+    public Fm_DatosPersonales() {
     }
 
     @Nullable
@@ -78,7 +75,7 @@ public class fm_DatosPersonales extends Fragment {
         try {
             fin = new BufferedReader(
                     new InputStreamReader(
-                            getActivity().openFileInput(Contantes.TOKEN)));
+                            getActivity().openFileInput(Constantes.TOKEN)));
             token = fin.readLine();
             fin.close();
             if(token == null) return -1;
@@ -135,12 +132,12 @@ public class fm_DatosPersonales extends Fragment {
                 usuario.modificacion();
                 Toast.makeText(rootView.getContext(), getString(R.string.MODIFICACION_CORRECTA), Toast.LENGTH_SHORT).show();
                 FragmentManager fm = getFragmentManager();
-                fm.beginTransaction().replace(R.id.content_frame,new fm_listarMedicamentos()).commit();
+                fm.beginTransaction().replace(R.id.content_frame,new Fm_listarMedicamentos()).commit();
             }else if (!usuario.existeUsuario()) {
                 usuario.modificacion();
                 Toast.makeText(rootView.getContext(), getString(R.string.MODIFICACION_CORRECTA), Toast.LENGTH_SHORT).show();
                 FragmentManager fm = getFragmentManager();
-                fm.beginTransaction().replace(R.id.content_frame, new fm_listarMedicamentos()).commit();
+                fm.beginTransaction().replace(R.id.content_frame, new Fm_listarMedicamentos()).commit();
             } else {
                 Toast.makeText(rootView.getContext(), getString(R.string.USUARIO_EXISTENTE), Toast.LENGTH_SHORT).show();
             }
@@ -194,7 +191,7 @@ public class fm_DatosPersonales extends Fragment {
         // Abrir un fichero de salida privado a la aplicación
         OutputStreamWriter fout= null;
         try {
-            fout = new OutputStreamWriter(getActivity().openFileOutput(Contantes.TOKEN, Context.MODE_PRIVATE));
+            fout = new OutputStreamWriter(getActivity().openFileOutput(Constantes.TOKEN, Context.MODE_PRIVATE));
             fout.write("");
             fout.close();
         } catch (FileNotFoundException e) {

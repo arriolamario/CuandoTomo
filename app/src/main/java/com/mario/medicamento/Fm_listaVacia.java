@@ -12,7 +12,7 @@ import android.widget.Button;
 /**
  * Created by Mario on 21/07/2016.
  */
-public class fm_listaVacia2 extends Fragment {
+public class Fm_listaVacia extends Fragment {
     Button btnAgregar;
     View rootView;
     @Nullable
@@ -26,7 +26,7 @@ public class fm_listaVacia2 extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentManager fm = getFragmentManager();
-                fm.beginTransaction().replace(R.id.content_frame,new fm_agregarMedicamento()).commit();
+                fm.beginTransaction().replace(R.id.content_frame,new Fm_agregarMedicamento()).commit();
                 getActivity().setTitle("Agregar");
             }
         });

@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.mario.medicamento.Clase.Medicamento;
-import com.mario.medicamento.Clase.Usuario;
 import com.mario.medicamento.R;
 
 import java.util.List;

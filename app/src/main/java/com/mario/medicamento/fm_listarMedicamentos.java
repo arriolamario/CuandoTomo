@@ -5,11 +5,9 @@ import android.app.ActivityManager;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,15 +18,15 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.mario.medicamento.Clase.Medicamento;
-import com.mario.medicamento.Clase.Usuario;
+import com.mario.medicamento.Clases.Constantes;
+import com.mario.medicamento.Clases.Medicamento;
+import com.mario.medicamento.Clases.Usuario;
 import com.mario.medicamento.Clases.ListMedicamentoAdapter;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 /**
@@ -36,14 +34,14 @@ import java.util.ArrayList;
  */
 
 //Lista de medicamentos
-public class fm_listarMedicamentos extends Fragment {
+public class Fm_listarMedicamentos extends Fragment {
     private final String CLASE = "fm_listarMedicamento";
     View rootView;
     ListView listView;
     ArrayList<Medicamento> listMed;
     ArrayList listaMedicamentos;
     Usuario usuario;
-    public fm_listarMedicamentos() {
+    public Fm_listarMedicamentos() {
     }
 
     @TargetApi(Build.VERSION_CODES.M)
@@ -61,7 +59,7 @@ public class fm_listarMedicamentos extends Fragment {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Medicamento medicamento = (Medicamento) listaMedicamentos.get(position);
                 FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.content_frame, new fm_modificarMedicamento(medicamento)).commit();
+                fragmentManager.beginTransaction().replace(R.id.content_frame, new Fm_modificarMedicamento(medicamento)).commit();
                 getActivity().setTitle("Modificar");
                 return true;
             }
@@ -82,7 +80,7 @@ public class fm_listarMedicamentos extends Fragment {
         int id = recuperarIdUsuario();
         if(id == -1) {
             FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.content_frame,new fm_listaVacia2()).commit();
+            fragmentManager.beginTransaction().replace(R.id.content_frame,new Fm_listaVacia()).commit();
             return false;
         }
 
@@ -95,7 +93,7 @@ public class fm_listarMedicamentos extends Fragment {
         }
         else{
             FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.content_frame,new fm_listaVacia2()).commit();
+            fragmentManager.beginTransaction().replace(R.id.content_frame,new Fm_listaVacia()).commit();
             return false;
         }
 
@@ -110,7 +108,7 @@ public class fm_listarMedicamentos extends Fragment {
         try {
             fin = new BufferedReader(
                     new InputStreamReader(
-                            getActivity().openFileInput(Contantes.TOKEN)));
+                            getActivity().openFileInput(Constantes.TOKEN)));
             token = fin.readLine();
             fin.close();
             if(token == null) return -1;

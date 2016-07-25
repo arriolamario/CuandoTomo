@@ -9,12 +9,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.mario.medicamento.Clase.Usuario;
+import com.mario.medicamento.Clases.Constantes;
+import com.mario.medicamento.Clases.Usuario;
 import com.mario.medicamento.Clases.ListUsuarioAdapter;
+import com.mario.medicamento.Servicios.ServiceMedicamento;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -80,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
         OutputStreamWriter fout= null;
         try {
             fout = new OutputStreamWriter(
-                    openFileOutput(Contantes.TOKEN, Context.MODE_PRIVATE));
+                    openFileOutput(Constantes.TOKEN, Context.MODE_PRIVATE));
             fout.write(Integer.toString(id));
             fout.close();
         } catch (FileNotFoundException e) {
@@ -107,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
         try {
             fin = new BufferedReader(
                     new InputStreamReader(
-                            openFileInput(Contantes.TOKEN)));
+                            openFileInput(Constantes.TOKEN)));
             token = fin.readLine();
             fin.close();
             if(token == null) return;
@@ -138,7 +139,6 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
     }
 
     private void IrARegistrar(){

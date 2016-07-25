@@ -2,8 +2,6 @@ package com.mario.medicamento;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.Context;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -15,16 +13,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.mario.medicamento.Clase.Medicamento;
-import com.mario.medicamento.Clase.Usuario;
+import com.mario.medicamento.Clases.Medicamento;
 import com.mario.medicamento.Clases.DrawerItem;
 import com.mario.medicamento.Clases.DrawerListAdapter;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 public class MenuActivity extends ActionBarActivity {
@@ -72,7 +64,7 @@ public class MenuActivity extends ActionBarActivity {
 
 
         FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_frame, new fm_listarMedicamentos()).commit();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, new Fm_listarMedicamentos()).commit();
 
         drawerList.setItemChecked(0, true);
         setTitle(tagTitles[0]);
@@ -90,19 +82,19 @@ public class MenuActivity extends ActionBarActivity {
         Fragment fragment;
         switch (position) {
             case 0:
-                fragment = new fm_listarMedicamentos();
+                fragment = new Fm_listarMedicamentos();
                 break;
             case 1:
-                fragment = new fm_agregarMedicamento();
+                fragment = new Fm_agregarMedicamento();
                 break;
             case 2:
-                fragment = new fm_DatosPersonales();
+                fragment = new Fm_DatosPersonales();
                 break;
             case 3:
-                fragment = new fm_salir();
+                fragment = new Fm_salir();
                 break;
             default:
-                fragment = new fm_listarMedicamentos();
+                fragment = new Fm_listarMedicamentos();
         }
 
         FragmentManager fragmentManager = getFragmentManager();

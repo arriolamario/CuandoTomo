@@ -26,8 +26,9 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.mario.medicamento.Clase.Medicamento;
-import com.mario.medicamento.Clase.Usuario;
+import com.mario.medicamento.Clases.Constantes;
+import com.mario.medicamento.Clases.Medicamento;
+import com.mario.medicamento.Clases.Usuario;
 
 
 import java.io.BufferedReader;
@@ -42,7 +43,7 @@ import java.util.Calendar;
  */
 
 //Agregar Medicamentos
-public class fm_agregarMedicamento extends Fragment{
+public class Fm_agregarMedicamento extends Fragment{
 
     View rootView;
     TextView tvFechaInicio, tvHoraInicio, tvFechaFin, tvHoraFin;
@@ -56,7 +57,7 @@ public class fm_agregarMedicamento extends Fragment{
     int añoI, mesI, diaI, añoF, mesF, diaF;
     int horaI, minI, horaF, minF;
 
-    public fm_agregarMedicamento() {
+    public Fm_agregarMedicamento() {
     }
 
     @Nullable
@@ -227,7 +228,7 @@ public class fm_agregarMedicamento extends Fragment{
                     Medicamento medicamento = new Medicamento(context,nombre,inicio,fin,intervalo,usuario, tipoIntervalo);
                     if(medicamento.alta()){
                         FragmentManager fm = getFragmentManager();
-                        fm.beginTransaction().replace(R.id.content_frame,new fm_listarMedicamentos()).commit();
+                        fm.beginTransaction().replace(R.id.content_frame,new Fm_listarMedicamentos()).commit();
                         Toast.makeText(context,getString(R.string.REGISTRO_CORRECTO),Toast.LENGTH_SHORT).show();
                     }else{
                         Toast.makeText(context,getString(R.string.REGISTRO_INCORRECTO),Toast.LENGTH_SHORT).show();
@@ -264,9 +265,9 @@ public class fm_agregarMedicamento extends Fragment{
 
     public String getTipoIntervalo(){
         String res = null;
-        if(rbDia.isChecked()){ res = Contantes.DIA; }
-        if(rbHora.isChecked()){ res = Contantes.HORA; }
-        if(rbMin.isChecked()) { res = Contantes.MINUTO; }
+        if(rbDia.isChecked()){ res = Constantes.DIA; }
+        if(rbHora.isChecked()){ res = Constantes.HORA; }
+        if(rbMin.isChecked()) { res = Constantes.MINUTO; }
 
         return  res;
     }
@@ -277,7 +278,7 @@ public class fm_agregarMedicamento extends Fragment{
         try {
             fin = new BufferedReader(
                     new InputStreamReader(
-                            getActivity().openFileInput(Contantes.TOKEN)));
+                            getActivity().openFileInput(Constantes.TOKEN)));
             token = fin.readLine();
             fin.close();
             if(token == null) return -1;

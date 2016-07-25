@@ -22,11 +22,11 @@
         <activity android:name=".LoginActivity"/>
 
         <service
-            android:name=".ServiceMedicamento"
+            android:name=".Servicios.ServiceMedicamento"
             android:enabled="true"
             android:exported="true"/>
 
-        <receiver android:name=".InicioMovilReceiver">
+        <receiver android:name=".Broadcast.InicioMovilReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>

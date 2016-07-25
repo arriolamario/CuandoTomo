@@ -1,4 +1,4 @@
-package com.mario.medicamento.Clase;
+package com.mario.medicamento.Clases;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

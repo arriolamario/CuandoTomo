@@ -11,7 +11,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,8 +24,9 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.mario.medicamento.Clase.Medicamento;
-import com.mario.medicamento.Clase.Usuario;
+import com.mario.medicamento.Clases.Constantes;
+import com.mario.medicamento.Clases.Medicamento;
+import com.mario.medicamento.Clases.Usuario;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -38,7 +38,7 @@ import java.util.Calendar;
 /**
  * Created by Mario on 17/02/2016.
  */
-public class fm_modificarMedicamento extends Fragment{
+public class Fm_modificarMedicamento extends Fragment{
 
     View rootView;
     SimpleDateFormat sdfDate;
@@ -51,10 +51,10 @@ public class fm_modificarMedicamento extends Fragment{
     int horaI, minI, horaF, minF;
     Medicamento medicamento;
 
-    public fm_modificarMedicamento() {
+    public Fm_modificarMedicamento() {
     }
 
-    public fm_modificarMedicamento(Medicamento medicamento) {
+    public Fm_modificarMedicamento(Medicamento medicamento) {
         this.medicamento = medicamento;
         añoI = medicamento.getFechaInicio().get(Calendar.YEAR);
         mesI = medicamento.getFechaInicio().get(Calendar.MONTH);
@@ -138,19 +138,19 @@ public class fm_modificarMedicamento extends Fragment{
         tvFechaFin.setText(fechaFin);
         tvHoraFin.setText(horaFin);
         int intervalo = medicamento.getIntervalo();
-        if(medicamento.getTipoIntervalo().compareTo(Contantes.DIA) == 0) {
+        if(medicamento.getTipoIntervalo().compareTo(Constantes.DIA) == 0) {
             rbDia.setChecked(true);
             rbMin.setChecked(false);
             rbHora.setChecked(false);
             intervalo = (intervalo / 24)/ 60;
 
         }
-        if(medicamento.getTipoIntervalo().compareTo(Contantes.MINUTO) == 0) {
+        if(medicamento.getTipoIntervalo().compareTo(Constantes.MINUTO) == 0) {
             rbMin.setChecked(true);
             rbDia.setChecked(false);
             rbHora.setChecked(false);
         }
-        if(medicamento.getTipoIntervalo().compareTo(Contantes.HORA)==0) {
+        if(medicamento.getTipoIntervalo().compareTo(Constantes.HORA)==0) {
             rbMin.setChecked(false);
             rbHora.setChecked(true);
             rbDia.setChecked(false);
@@ -206,7 +206,7 @@ public class fm_modificarMedicamento extends Fragment{
             med.setId(medicamento.getId());
             if(med.modificacion()){
                 FragmentManager fm = getFragmentManager();
-                fm.beginTransaction().replace(R.id.content_frame,new fm_listarMedicamentos()).commit();
+                fm.beginTransaction().replace(R.id.content_frame,new Fm_listarMedicamentos()).commit();
                 Toast.makeText(context, getString(R.string.MODIFICACION_CORRECTA), Toast.LENGTH_SHORT).show();
             }else{
                 Toast.makeText(context,getString(R.string.MODIFICACION_INCORRECTA),Toast.LENGTH_SHORT).show();
@@ -249,7 +249,7 @@ public class fm_modificarMedicamento extends Fragment{
                 public void onClick(DialogInterface dialog, int which) {
                     medicamento.baja();
                     FragmentManager fm = getFragmentManager();
-                    fm.beginTransaction().replace(R.id.content_frame,new fm_listarMedicamentos()).commit();
+                    fm.beginTransaction().replace(R.id.content_frame,new Fm_listarMedicamentos()).commit();
                 }
             }).setNegativeButton("no", new DialogInterface.OnClickListener() {
                 @Override
@@ -285,9 +285,9 @@ public class fm_modificarMedicamento extends Fragment{
 
     public String getTipoIntervalo(){
         String res = null;
-        if(rbDia.isChecked()){ res = Contantes.DIA; }
-        if(rbHora.isChecked()){ res = Contantes.HORA; }
-        if(rbMin.isChecked()) { res = Contantes.MINUTO; }
+        if(rbDia.isChecked()){ res = Constantes.DIA; }
+        if(rbHora.isChecked()){ res = Constantes.HORA; }
+        if(rbMin.isChecked()) { res = Constantes.MINUTO; }
 
         return  res;
     }
@@ -298,7 +298,7 @@ public class fm_modificarMedicamento extends Fragment{
         try {
             fin = new BufferedReader(
                     new InputStreamReader(
-                            getActivity().openFileInput(Contantes.TOKEN)));
+                            getActivity().openFileInput(Constantes.TOKEN)));
             token = fin.readLine();
             fin.close();
             if(token == null) return -1;

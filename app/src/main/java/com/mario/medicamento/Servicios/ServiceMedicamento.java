@@ -1,4 +1,4 @@
-package com.mario.medicamento;
+package com.mario.medicamento.Servicios;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -12,8 +12,10 @@ import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import com.mario.medicamento.Clase.Medicamento;
-import com.mario.medicamento.Clase.Usuario;
+import com.mario.medicamento.Clases.Medicamento;
+import com.mario.medicamento.Clases.Usuario;
+import com.mario.medicamento.LoginActivity;
+import com.mario.medicamento.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;
