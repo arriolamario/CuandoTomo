@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:background="@drawable/fondo">
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -16,5 +15,14 @@
             android:text="No hay medicamentos"
             android:textSize="@dimen/tamaño_titulo"
             android:textColor="@color/blanco"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:text="AGREGAR"
+            android:textColor="@color/blanco"
+            android:textSize="@dimen/tamaño_titulo"
+            android:id="@+id/btnAgregar"/>
+
 
 </LinearLayout>

@@ -137,10 +137,13 @@ public class fm_modificarMedicamento extends Fragment{
         tvHoraInicio.setText(horaInicio);
         tvFechaFin.setText(fechaFin);
         tvHoraFin.setText(horaFin);
+        int intervalo = medicamento.getIntervalo();
         if(medicamento.getTipoIntervalo().compareTo(Contantes.DIA) == 0) {
             rbDia.setChecked(true);
             rbMin.setChecked(false);
             rbHora.setChecked(false);
+            intervalo = (intervalo / 24)/ 60;
+
         }
         if(medicamento.getTipoIntervalo().compareTo(Contantes.MINUTO) == 0) {
             rbMin.setChecked(true);
@@ -151,9 +154,10 @@ public class fm_modificarMedicamento extends Fragment{
             rbMin.setChecked(false);
             rbHora.setChecked(true);
             rbDia.setChecked(false);
+            intervalo = intervalo/60;
         }
-        etIntervalo.setText(String.valueOf(medicamento.getIntervalo()));
         medicamento.mostrarDatos();
+        etIntervalo.setText(String.valueOf(intervalo));
     }
 
     @Override

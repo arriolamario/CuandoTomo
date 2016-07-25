@@ -1,28 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/fondo"
-        android:scaleType="centerCrop"/>
-
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo">
     <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:padding="25dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Iniciar Sesion"
+                android:text="Usuarios"
                 android:ems="15"
                 android:gravity="center"
                 android:layout_gravity="center"
@@ -37,26 +31,15 @@
                 android:textAlignment="center"
                 android:id="@+id/lvListaUsuario" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <Button
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:layout_marginTop="50dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="¿No tiene una cuenta?  "
-                    android:textSize="@dimen/tamaño_letra"
-                    android:textColor="@color/blanco"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="  REGISTRAR!!"
-                    android:onClick="registrar"
-                    android:textSize="@dimen/tamaño_titulo"
-                    android:textColor="@color/blanco"/>
-            </LinearLayout>
+                android:background="@drawable/button"
+                android:text="REGISTRAR"
+                android:textColor="@color/blanco"
+                android:textSize="@dimen/tamaño_titulo"
+                android:id="@+id/btnRegistrar"
+                />
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

@@ -89,6 +89,10 @@ public class ListMedicamentoAdapter extends ArrayAdapter {
         else{
             res = hs +":"+min;
         }
+
+        if(days > 0){
+            res = days + "dias " + res;
+        }
         return res;
     }
 

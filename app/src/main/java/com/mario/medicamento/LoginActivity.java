@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
 
     ListView lvLista;
     ArrayList<Usuario> listaUsuario;
-
+    Button btnRegistrar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,9 +38,10 @@ public class LoginActivity extends AppCompatActivity {
         lvLista = (ListView) findViewById(R.id.lvListaUsuario);
         actualizarLista();
 
-        lvLista.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+        lvLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Usuario usuario = new Usuario(getApplicationContext(), listaUsuario.get(position).getId());
 
                 if (usuario.login()) {
@@ -49,7 +50,15 @@ public class LoginActivity extends AppCompatActivity {
                     LoginFalse();
                 }
 
-                return true;
+            }
+        });
+
+        btnRegistrar = (Button) findViewById(R.id.btnRegistrar);
+
+        btnRegistrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplication(),RegistrarActivity.class));
             }
         });
 
@@ -57,18 +66,13 @@ public class LoginActivity extends AppCompatActivity {
 
     private void actualizarLista() {
         listaUsuario = Usuario.getUsuarios(getApplicationContext());
-        lvLista.setAdapter(new ListUsuarioAdapter(getApplicationContext(),listaUsuario));
+        lvLista.setAdapter(new ListUsuarioAdapter(getApplicationContext(), listaUsuario));
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         actualizarLista();
-    }
-
-    public void registrar(View v){
-        Intent act = new Intent(this, RegistrarActivity.class);
-        startActivity(act);
     }
 
     public void grabarId(int id){

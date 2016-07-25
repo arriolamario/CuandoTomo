@@ -122,12 +122,11 @@ public class fm_DatosPersonales extends Fragment {
         String nombre = etNombre.getText().toString();
         String apellido = etApellido.getText().toString();
         String user = etUsuario.getText().toString();
-        String clave = etClave.getText().toString();
         Boolean mismoUsuario = false;
         if(user.compareTo(usuario.getUsuario()) == 0){
             mismoUsuario = true;
         }
-        if(controlarCampos(nombre,apellido,user,clave)){
+        if(controlarCampos(nombre,apellido,user)){
             usuario.setNombre(nombre);
             usuario.setApellido(apellido);
             usuario.setUsuario(user);
@@ -150,7 +149,7 @@ public class fm_DatosPersonales extends Fragment {
 
     }
 
-    private boolean controlarCampos(String nombre, String apellido, String usuario, String clave) {
+    private boolean controlarCampos(String nombre, String apellido, String usuario) {
         if(nombre.isEmpty()) {
             Toast.makeText(rootView.getContext(),R.string.FALTA_NOMBRE,Toast.LENGTH_SHORT).show();
             return false;
@@ -161,10 +160,6 @@ public class fm_DatosPersonales extends Fragment {
         }
         if(usuario.isEmpty()) {
             Toast.makeText(rootView.getContext(),R.string.FALTA_USUARIO,Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        if(clave.isEmpty()) {
-            Toast.makeText(rootView.getContext(),R.string.FALTA_CLAVE,Toast.LENGTH_SHORT).show();
             return false;
         }
 

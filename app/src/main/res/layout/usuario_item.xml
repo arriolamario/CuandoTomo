@@ -16,7 +16,7 @@
                 android:layout_height="wrap_content"
                 android:text="PROXIMA TOMA"
                 android:id="@+id/tvNombreUsuario"
-                android:background="@drawable/button"
+                android:background="@drawable/item_lista"
                 android:textSize="@dimen/tamaño_letra"
                 android:textColor="@color/blanco"
                 />
