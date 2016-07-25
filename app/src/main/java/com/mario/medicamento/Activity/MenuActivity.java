@@ -1,4 +1,4 @@
-package com.mario.medicamento;
+package com.mario.medicamento.Activity;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -13,9 +13,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.mario.medicamento.Fragment.Fm_DatosPersonales;
+import com.mario.medicamento.Fragment.Fm_agregarMedicamento;
+import com.mario.medicamento.Fragment.Fm_listarMedicamentos;
+import com.mario.medicamento.Fragment.Fm_salir;
 import com.mario.medicamento.Clases.Medicamento;
 import com.mario.medicamento.Clases.DrawerItem;
 import com.mario.medicamento.Clases.DrawerListAdapter;
+import com.mario.medicamento.R;
 
 import java.util.ArrayList;
 

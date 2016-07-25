@@ -1,10 +1,11 @@
-package com.mario.medicamento;
+package com.mario.medicamento.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import com.mario.medicamento.R;
 import com.mario.medicamento.Servicios.ServiceMedicamento;
 
 /**

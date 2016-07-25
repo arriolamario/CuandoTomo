@@ -10,16 +10,16 @@
         android:theme="@style/AppTheme"
         >
 
-        <activity android:name=".Presentacion">
+        <activity android:name=".Activity.Presentacion">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegistrarActivity" />
-        <activity android:name=".MenuActivity" />
-        <activity android:name=".LoginActivity"/>
+        <activity android:name=".Activity.RegistrarActivity" />
+        <activity android:name=".Activity.MenuActivity" />
+        <activity android:name=".Activity.LoginActivity"/>
 
         <service
             android:name=".Servicios.ServiceMedicamento"

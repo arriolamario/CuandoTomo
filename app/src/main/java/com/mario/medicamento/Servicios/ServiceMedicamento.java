@@ -14,7 +14,7 @@ import android.util.Log;
 
 import com.mario.medicamento.Clases.Medicamento;
 import com.mario.medicamento.Clases.Usuario;
-import com.mario.medicamento.LoginActivity;
+import com.mario.medicamento.Activity.LoginActivity;
 import com.mario.medicamento.R;
 
 import java.util.ArrayList;

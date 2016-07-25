@@ -1,4 +1,4 @@
-package com.mario.medicamento;
+package com.mario.medicamento.Fragment;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -21,8 +21,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mario.medicamento.Activity.LoginActivity;
 import com.mario.medicamento.Clases.Constantes;
 import com.mario.medicamento.Clases.Usuario;
+import com.mario.medicamento.R;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

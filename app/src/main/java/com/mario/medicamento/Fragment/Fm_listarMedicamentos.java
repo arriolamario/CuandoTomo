@@ -1,4 +1,4 @@
-package com.mario.medicamento;
+package com.mario.medicamento.Fragment;
 
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
@@ -22,6 +22,7 @@ import com.mario.medicamento.Clases.Constantes;
 import com.mario.medicamento.Clases.Medicamento;
 import com.mario.medicamento.Clases.Usuario;
 import com.mario.medicamento.Clases.ListMedicamentoAdapter;
+import com.mario.medicamento.R;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

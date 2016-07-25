@@ -1,4 +1,4 @@
-package com.mario.medicamento;
+package com.mario.medicamento.Fragment;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -14,7 +14,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mario.medicamento.Activity.LoginActivity;
 import com.mario.medicamento.Clases.Constantes;
+import com.mario.medicamento.R;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

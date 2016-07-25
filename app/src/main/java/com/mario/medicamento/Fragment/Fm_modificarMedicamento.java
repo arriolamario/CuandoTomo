@@ -1,4 +1,4 @@
-package com.mario.medicamento;
+package com.mario.medicamento.Fragment;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.mario.medicamento.Clases.Constantes;
 import com.mario.medicamento.Clases.Medicamento;
 import com.mario.medicamento.Clases.Usuario;
+import com.mario.medicamento.R;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

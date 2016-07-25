@@ -1,4 +1,4 @@
-package com.mario.medicamento;
+package com.mario.medicamento.Activity;
 
 import android.app.NotificationManager;
 import android.content.Context;
@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.mario.medicamento.Clases.Constantes;
 import com.mario.medicamento.Clases.Usuario;
 import com.mario.medicamento.Clases.ListUsuarioAdapter;
+import com.mario.medicamento.R;
 import com.mario.medicamento.Servicios.ServiceMedicamento;
 
 import java.io.BufferedReader;

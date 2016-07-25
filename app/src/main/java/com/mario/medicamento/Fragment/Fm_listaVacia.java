@@ -1,4 +1,4 @@
-package com.mario.medicamento;
+package com.mario.medicamento.Fragment;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.mario.medicamento.R;
 
 /**
  * Created by Mario on 21/07/2016.

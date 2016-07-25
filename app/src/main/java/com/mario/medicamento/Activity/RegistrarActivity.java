@@ -1,4 +1,4 @@
-package com.mario.medicamento;
+package com.mario.medicamento.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.*;
 
 import com.mario.medicamento.Clases.Usuario;
+import com.mario.medicamento.R;
 
 /**
  * Created by Mario on 18/06/2016.
